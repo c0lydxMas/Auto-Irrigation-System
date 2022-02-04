@@ -4,7 +4,7 @@
 #define pin_digital 3
 #define pin_led 13
 #define pin_relay 12
-#define moisture_threshhold 1300
+#define moisture_threshhold 500
 
 SerialTransfer myTransfer;
 
@@ -23,7 +23,7 @@ void loop()
 {
   // Read the voltage value from the soil moisture sensor
   // The module came with the sensor helps converting analog
-  // signal from the sensor to an integer ranged from 0 to 1024
+  // signal from the sensor to an integer ranged from 0 to 1023
   // 0: moistest - 1024: driest
   // Read sensor value from A0 pin
   int soil_moisture = analogRead(pin_analog);
@@ -49,4 +49,6 @@ void loop()
     // Deactivate the relay
     digitalWrite(pin_relay, HIGH);
   }
+  //Sleep 200 milliseconds
+  delay(200);
 }

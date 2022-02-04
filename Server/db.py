@@ -1,8 +1,7 @@
-import datetime
 import sqlite3
 from venv import create
 
-conn = sqlite3.connect('./test/SoilMoisture_db.sqlite')
+conn = sqlite3.connect('E:\Dev\EmbeddedSystem\Server\SoilMoisture_db.sqlite')
 cur = conn.cursor()
 
 # createTable = '''CREATE TABLE soilmoisture (
@@ -10,16 +9,17 @@ cur = conn.cursor()
 #                  soil_moisture INTEGER)'''
 # cur.execute(createTable)
 
-currentDateTime = datetime.datetime.now()
-x = 1024
-arr = [currentDateTime, x]
+# currentDateTime = datetime.datetime.now()
+# x = 1024
+# arr = [currentDateTime, x]
 
 insertQuery = """INSERT INTO soilmoisture
                  VALUES (?, ?);"""
 
-cur.execute(insertQuery, arr)
-conn.commit()
+def insertData(arr):
+    cur.execute(insertQuery, arr)
+    conn.commit()
 
-cur.execute('SELECT * FROM soilmoisture')
-data = cur.fetchall()
-print(data)
+# cur.execute('SELECT * FROM soilmoisture')
+# data = cur.fetchall()
+# print(data)
